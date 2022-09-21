@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -19,3 +20,6 @@ class Stock(models.Model):
 
     def __str__(self):
         return self.nama
+
+    def get_absolute_url(self):
+        return reverse('detailstock', args=[str(self.id)])

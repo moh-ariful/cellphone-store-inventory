@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    {% if user.is_authenticated %}
+    <h2>Edit Stock</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <br>
+    <a href="{% url 'deletestock' stock.id %}" class="btn btn-danger">Delete this stock</a>
+
+    {% endif %}
+
+</form>
+</div>
+{% endblock %}

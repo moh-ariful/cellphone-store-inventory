@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+    <h2>Are you sure you want to delete this stock?</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+    {% endif %}
+<br>
+<h2><a href="{% url 'detailstock' stock.id %}">{{ stock.nama }}</a></h2>
+</div>
+{% endblock %}

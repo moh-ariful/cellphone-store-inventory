@@ -13,7 +13,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">ODIN PONSEL</a>
+        <a class="navbar-brand" href="{% url 'home' %}">ODIN PONSEL</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,13 +21,26 @@
         <div class="collapse navbar-collapse" id="navbarsExample02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(Now)</span></a>
+              <a class="p-2 text-light">Welcome, {{ user.username }}<span class="sr-only">(current)</span></a>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav-item active">
               <a class="nav-link active" href="{% url 'stok' %}">Stock Report</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link active" href="#">Contack Us</a>
+              <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item active">
+              <a class="nav-link active" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link active" href="{% url 'signup' %}">Sign Up</a>
+            </li>
+            {% endif %}
+            <li class="nav-item active">
+              <a class="nav-link active" href="{% url 'contact' %}">Contack Us</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-md-0">

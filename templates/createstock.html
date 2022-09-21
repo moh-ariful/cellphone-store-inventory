@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+    <h2>Create Stock</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <br>
+    <button type="submit" class="btn btn-primary">Create Stock</button>
+    {% endif %}
+</form>
+</div>
+{% endblock %}
