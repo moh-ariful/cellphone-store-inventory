@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>SELAMAT DATANG DI KONTER ODIN</h1>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>
+          Data Stock
+          <a href="" class="btn btn-primary">Tambah</a>
+        </h3>
+  
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>NAMA ITEM</th>
+              <th>JUMLAH</th>
+              <th>HARGA</th>
+              <th>TANGGAL</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for stock in stocks %}
+            <tr>
+              <td>{{ stock.nama }}</td>
+              <td><a href="">{{ stock.jumlah }}</a></td>
+              <td>{{ stock.harga }}</td>
+              <td>{{ stock.tanggal }}</td>
+              <td>
+                <button data-toggle="modal" data-target="#hapus-" class="btn btn-danger">Hapus</button>
+              </td>
+  
+              <div class="modal" id="hapus-">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <div class="modal-title">
+                        <h3>Hapus</h3>
+                      </div>
+                    </div>
+                    <div class="modal-body">
+                      Apakah anda yakin ingin menghapus <strong></strong>?
+                    </div>
+                    <div class="modal-footer">
+                      <a href="" class="btn btn-danger">Hapus</a>
+                      <button class="btn btn-dark" data-dismiss="modal">Tidak</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+    
+
