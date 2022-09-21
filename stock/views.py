@@ -3,6 +3,7 @@ from .models import Stock
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CreateUserForm
+from django.db.models import Q
 
 # Create your views here.
 
@@ -17,6 +18,12 @@ def contact(request):
 
 def stok(request):
     stocks = Stock.objects.all().order_by('-id')
+    query = request.GET.get('q')
+
+    if query:
+        stocks = stocks.filter(Q(nama__icontains=query) |
+                               Q(jumlah__icontains=query))
+
     context = {
         'stocks': stocks
     }
